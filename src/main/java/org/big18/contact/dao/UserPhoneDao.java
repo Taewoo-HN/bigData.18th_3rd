@@ -6,12 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class UserPhoneDao {
-    ContactUserCon joinUser;
 
-    private final JdbcTemplate;
-
-    public UserPhoneDao(JdbcTemplate jdbcTemplate) throws Exception {
-        StringBuilder sb = new StringBuilder();
-        sb.append("select  ");
-    }
 }
