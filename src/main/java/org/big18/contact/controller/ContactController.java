@@ -8,7 +8,7 @@ import org.big18.contact.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller("/api")
+@Controller("/")
 public class ContactController {
 
     private final UserDao userDao;
@@ -20,7 +20,7 @@ public class ContactController {
         this.contactDao = contactDao;
         this.userService = userService;
     }
-    @PostMapping("/api/signup")
+    @PostMapping("/signup")
     public void Signup(@RequestBody UserDto user) {
        userService.signUp(user.getUser_id(), user.getUser_pw(), user.getUser_name(), user.getEmail());
     }
@@ -30,11 +30,15 @@ public class ContactController {
         return "index.html";
     }
 
-    @GetMapping("/api/main")
-    public ContactDto Mainpage() {
+    @GetMapping("/main")
+    public ContactDto Mainpage(@RequestParam String user_id) {
         ContactDto contactDto = new ContactDto();
+
         return contactDto;
     }
 
-
+    @GetMapping("/error")
+    public String Errorpage() {
+        return "error404.html";
+    }
 }
