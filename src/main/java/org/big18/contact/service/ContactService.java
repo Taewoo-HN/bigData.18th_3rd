@@ -14,14 +14,4 @@ public class ContactService {
     @Autowired
     private UserPhoneDao uDao;
 
-    public void setContact(ContactDto cdto, String user_id) {
-        try {
-            cDao.insertOne(cdto);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-
-    }
-
-
 }

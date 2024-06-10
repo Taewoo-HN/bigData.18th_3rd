@@ -18,12 +18,12 @@
                 <div class="mb-3">
                     <label for="user_id" class="form-label"> ID </label>
                     <input class=" form-control" type="text" name="user_id" id="user_id" placeholder="ID"
-                           autocomplete="none"/>
+                           autocomplete="none" required/>
                 </div>
                 <div class="mb-3">
                     <label for="user_pw" class="form-label"> Password </label>
                     <input class=" form-control" type="password" name="user_pw" id="user_pw"
-                           placeholder="Password"/>
+                           placeholder="Password" required/>
                 </div>
                 <a href="/main" class="btn btn-warning col-md-auto " method="post">로그인</a>
             </form>
@@ -37,7 +37,7 @@
                         <div class="modal-header ">
                             <h5 class="modal-title" id="signupModalLabel">회원 가입</h5>
                         </div>
-                        <form>
+                        <form id="signupForm" action="/signup" method="post">
                             <div class="modal-body">
                                 <div>
                                     <label> ID </label>
@@ -58,7 +58,7 @@
                             </div>
                             <div class="modal-footer">
                                 <a class="btn btn-danger" data-dismiss="modal">닫기</a>
-                                <a href="/signup" class="btn btn-primary">제출</a>
+                                <a href="#" class="btn btn-primary" onclick="document.querySelector('#signupForm').submit()"  >제출</a>
                             </div>
                         </form>
                     </div>

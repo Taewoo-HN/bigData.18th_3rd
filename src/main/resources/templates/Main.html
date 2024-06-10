@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>메인페이지</title>
@@ -18,47 +18,44 @@
     />
 </head>
 <body>
-<div class="w3-sidebar w3-bar-block w3-black sidebar">
-    <button class="w3-bar-item w3-button" onclick="toggleSidebar()">
-        <i class="fa fa-bars"></i>
-    </button>
+<div class="w3-navbar w3-bar-block w3-black top-nav">
+    <a
+            href="#logout"
+            class=" w3-button"
+            onclick="location.href='./index.html'"
+    >
+        <i class="fa fa-sign-out-alt"></i> <span>로그아웃</span>
+    </a>
     <a
             href="#home"
-            class="w3-bar-item w3-button"
+            class=" w3-button"
             onclick="showSection('home')"
     >
         <i class="fa fa-home"></i> <span>메인화면</span>
     </a>
     <a
             href="#memberList"
-            class="w3-bar-item w3-button"
+            class=" w3-button"
             onclick="showSection('memberList')"
     >
         <i class="fa fa-users"></i> <span>회원목록</span>
     </a>
-    <a href="#add" class="w3-bar-item w3-button" onclick="showSection('add')">
+    <a href="#add" class="w3-button" onclick="showSection('add')">
         <i class="fa fa-user-plus"></i> <span>추가</span>
     </a>
     <a
             href="#search"
-            class="w3-bar-item w3-button"
+            class=" w3-button"
             onclick="showSection('search')"
     >
         <i class="fa fa-search"></i> <span>검색</span>
     </a>
     <a
             href="#edit"
-            class="w3-bar-item w3-button"
+            class=" w3-button"
             onclick="showSection('edit')"
     >
         <i class="fa fa-user-edit"></i> <span>수정</span>
-    </a>
-    <a
-            href="#logout"
-            class="w3-bar-item w3-button"
-            onclick="location.href='./index.html'"
-    >
-        <i class="fa fa-sign-out-alt"></i> <span>로그아웃</span>
     </a>
 </div>
 
@@ -75,31 +72,19 @@
             console.error("Selected section does not exist:", sectionId);
         }
     }
-
-    function toggleSidebar() {
-        const sidebar = document.querySelector(".sidebar");
-        const mainContainer = document.querySelector(".main-container");
-        http://searchcategory.co.kr/ad/cpc_open.php?app=205&domain=wrtn.ai&type=1&aid=8291&browser=chrome&guid=20240411AfTHUg
-
-            sidebar.classList.toggle("expanded");
-        if (sidebar.classList.contains("expanded")) {
-            mainContainer.style.marginLeft = "200px";
-        } else {
-            mainContainer.style.marginLeft = "0";
-        }
-    }
-
     document.addEventListener("DOMContentLoaded", () => {
         showSection("home");
     });
 </script>
 <div class="main-container">
     <div style="margin-left: 70px">
-        <div class="main-content">
+        <div class="main-content mt-5">
             <div id="home" class="section">
                 <h1 id="mainTitle">메인화면</h1>
             </div>
-
+            <div class="justify-content-center">
+                <a class="text-align-center "> 환영합니다. [[${user.name}]]님! </a>
+            </div>
             <div id="memberList" class="section">
                 <!-- 회원 정보 테이블 -->
                 <div class="mt-4">
@@ -114,7 +99,12 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <!-- 여기에 회원 정보가 동적으로 추가됩니다. -->
+                        <tr th:each="contact:${contactList}">
+                            <td th:text="${contact.name}"></td>
+                            <td th:text="${contact.phone_num}"></td>
+                            <td th:text="${contact.address}"></td>
+                            <td th:text="${contact.gubun_nm}"></td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
@@ -278,7 +268,6 @@
             >
                 추가
             </button>
-
             <!-- Modal Content -->
             <div
                     class="modal fade"
