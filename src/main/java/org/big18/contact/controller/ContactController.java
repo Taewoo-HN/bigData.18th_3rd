@@ -5,9 +5,10 @@ import org.big18.contact.dao.UserDao;
 import org.big18.contact.dto.ContactDto;
 import org.big18.contact.dto.UserDto;
 import org.big18.contact.service.UserService;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@RestController("/api")
+@Controller("/api")
 public class ContactController {
 
     private final UserDao userDao;
