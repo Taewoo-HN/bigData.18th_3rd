@@ -37,23 +37,23 @@
                         <div class="modal-header ">
                             <h5 class="modal-title" id="signupModalLabel">회원 가입</h5>
                         </div>
-                        <form id="signupForm" action="/signup" method="post">
+                        <form id="signupForm" action="/signup" method="post" datatype="">
                             <div class="modal-body">
                                 <div>
                                     <label> ID </label>
-                                    <input class="form-control" type="text" placeholder="아이디 입력" required/>
+                                    <input name="user_id" class="form-control" type="text" placeholder="아이디 입력" required/>
                                 </div>
                                 <div>
                                     <label>Password</label>
-                                    <input class="form-control" type="password" placeholder="비밀번호 입력" required/>
+                                    <input name="user_pw" class="form-control" type="password" placeholder="비밀번호 입력" required/>
                                 </div>
                                 <div>
                                     <label>이름</label>
-                                    <input class="form-control" type="text" placeholder="이름 입력" required/>
+                                    <input name="user_name" class="form-control" type="text" placeholder="이름 입력" required/>
                                 </div>
                                 <div>
                                     <label>email</label>
-                                    <input class="form-control" type="email" placeholder="이메일 입력" required/>
+                                    <input name="email" class="form-control" type="email" placeholder="이메일 입력" required/>
                                 </div>
                             </div>
                             <div class="modal-footer">
