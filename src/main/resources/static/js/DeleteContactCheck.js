@@ -1,4 +1,4 @@
-var confirm = function(title, msg, personid){
+let confirm = function(title, msg, personid){
     swal({
         title : title,
         text : msg,

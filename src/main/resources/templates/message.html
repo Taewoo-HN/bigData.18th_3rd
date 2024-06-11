@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>연락처 프로그램입니다.</title>
+</head>
+<body>
+<script th:inline="javascript">
+    var title = [[${title}]];
+    var message = [[${message}]];
+    var icon = [[${icon}]];
+
+    swal({
+        title : title,
+        text: message,
+        icon : icon,
+        buttons : '확인'
+    }).then((value) => {
+        if(value){
+            location.replace([[${searchUrl}]]);
+        }
+    });
+</script>
+</body>
+</html>

@@ -19,11 +19,11 @@ public class SessionController {
 
     public Model getUserInfo(HttpSession session, Model model) {
 //		상단에 적어줄 유저명과 ID 모델에 저장
-        String userid = (String) session.getAttribute("userid");
-        String username = (String) session.getAttribute("username");
+        String user_id = (String) session.getAttribute("user_id");
+        String user_name = (String) session.getAttribute("user_name");
 
-        model.addAttribute("username", username);
-        model.addAttribute("userid", userid);
+        model.addAttribute("user_name", user_name);
+        model.addAttribute("user_id", user_id);
 
         return model;
     } // end getUserInfo()

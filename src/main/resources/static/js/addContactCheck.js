@@ -1,7 +1,7 @@
 function formSubmit() {
     const form = document.querySelector('form');
 
-    var confirm = function(title, msg){
+    let confirm = function(title, msg){
         swal({
             title : title,
             text : msg,

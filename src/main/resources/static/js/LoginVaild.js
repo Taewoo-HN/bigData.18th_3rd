@@ -1,14 +1,14 @@
-function formSubmit() {
-    const form = document.querySelector('form');
-    if (isValidCode(form)) {
+function formlogSubmit() {
+    const form = document.querySelector('#loginForm');
+    if (isValidlogCode(form)) {
         form.submit();
     }
 }
 
 // 유효성 검사
-function isValidCode(form) {
-    const userid = form.userid.value;
-    const userpw = form.userpw.value;
+function isValidlogCode(form) {
+    const userid = form.user_id.value;
+    const userpw = form.user_pw.value;
 
     if(userid == ''){
         swal("에러: ID가 입력되지 않았습니다!", "ID를 입력하세요!", "error");

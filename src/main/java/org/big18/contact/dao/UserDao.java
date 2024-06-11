@@ -1,6 +1,7 @@
 package org.big18.contact.dao;
 
 import org.big18.contact.dto.UserDto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class UserDao {
     //	스프링 JDBC 사용을 위한 빈 등록
+    @Autowired
     private JdbcTemplate jdbcTemplate;
 
     public void addUser(UserDto dto) throws Exception {
