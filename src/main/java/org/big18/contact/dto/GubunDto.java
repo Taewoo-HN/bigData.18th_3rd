@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 public class GubunDto {
-    private String gubunCd;
-    private String gubunNm;
+    private String gubun_cd;
+    private String gubun_nm;
 
 }

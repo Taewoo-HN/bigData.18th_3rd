@@ -4,23 +4,23 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <head>
     <meta charset="UTF-8">
-    <title>연락처 프로그램입니다.</title>
+    <title>Give a message!</title>
 </head>
 <body>
 <script th:inline="javascript">
     var title = [[${title}]];
     var message = [[${message}]];
     var icon = [[${icon}]];
-
+    
     swal({
-        title : title,
-        text: message,
-        icon : icon,
-        buttons : '확인'
+    	title : title,
+    	text: message,
+    	icon : icon,
+    	buttons : '확인'
     }).then((value) => {
-        if(value){
-            location.replace([[${searchUrl}]]);
-        }
+    	if(value){
+    		location.replace([[${searchUrl}]]);
+    	}
     });
 </script>
 </body>

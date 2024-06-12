@@ -8,12 +8,13 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class UserDao {
-    //	스프링 JDBC 사용을 위한 빈 등록
+
+    /**JDBC Template 사용*/
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
     public void addUser(UserDto dto) throws Exception {
-        // 추가 쿼리 생성
+        /** 유저 추가 쿼리 설정 */
         StringBuilder sb = new StringBuilder();
 
         sb.append("INSERT INTO USER_info VALUES		");
@@ -21,7 +22,7 @@ public class UserDao {
 
         String sql = sb.toString();
 
-        // 추가 쿼리 실행
+        /** 유저 추가 */
         try {
             jdbcTemplate.update(sql, dto.getUser_id(), dto.getUser_pw(), dto.getUser_name(), dto.getEmail());
         } catch (Exception e) {
@@ -30,11 +31,11 @@ public class UserDao {
     }
     /** end addUser() */
 
-    //	ID 존재 여부 체크 메소드
+    /** 유저 아이디 존재하는지 확인 */
     public int getIdCheck(String userid) {
         StringBuilder sb = new StringBuilder();
 
-//		id 존재 여부 조회
+        /** select user_id*/
         sb.append("SELECT USER_ID		");
         sb.append("  FROM USER_INFO 	");
         sb.append(" WHERE USER_ID IN ?	");
@@ -44,7 +45,7 @@ public class UserDao {
         try {
             checkid = jdbcTemplate.queryForObject(sql, String.class, userid);
         } catch (Exception e) {
-//			결과가 없으면 빈칸 그대로.
+    /** 결과가 없으면 NULL 그대로.   */
             checkid = "";
         }
 

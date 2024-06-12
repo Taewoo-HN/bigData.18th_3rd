@@ -25,7 +25,7 @@ public class UserController {
     @GetMapping("/")
     public String Main(HttpSession session, Model model) {
 //		세션 확인하고 로그인 되어 있으면 메인 페이지로
-        if (session.getAttribute("islogin") != null) {
+        if (session.getAttribute("isLogin") != null) {
             model = scontroller.alreadyLogin(model);
             return "message";
 //		로그인이 안 되어 있으면 로그인 페이지로
@@ -39,11 +39,11 @@ public class UserController {
     @GetMapping("/login")
     public String LoginPage(HttpSession session, Model model) {
 //		세션 확인하고 로그인 되어 있으면 메인 페이지로
-        if (session.getAttribute("islogin") != null) {
+        if (session.getAttribute("isLogin") != null) {
             model = scontroller.alreadyLogin(model);
             return "message";
         }
-        return "Main";
+        return "index";
     }
 
     //	회원가입 페이지 띄우는 메소드
@@ -76,7 +76,7 @@ public class UserController {
             model.addAttribute("title", "로그인 성공!");
             model.addAttribute("message", "환영합니다.");
             model.addAttribute("icon", "success");
-            model.addAttribute("searchUrl", "/index");
+            model.addAttribute("searchUrl", "/main");
         }
 
 //		메시지 페이지로 포워딩

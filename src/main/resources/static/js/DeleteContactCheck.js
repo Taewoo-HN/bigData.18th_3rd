@@ -1,4 +1,4 @@
-let confirm = function(title, msg, personid){
+let confirm = function(title, msg, p_id){
     swal({
         title : title,
         text : msg,
@@ -11,11 +11,11 @@ let confirm = function(title, msg, personid){
         closeOnCancel : true
     }, function(isConfirm){
         if(isConfirm){
-            location.href = "/delete/" + personid;
+            location.href = "/delete/" + p_id;
         }
     });
 }
 
-function ConfirmDelete(personid){
-    confirm("정말로 삭제할까요?", "이 작업은 되돌릴 수 없습니다.", personid);
+function ConfirmDelete(p_id){
+    confirm("정말로 삭제할까요?", "이 작업은 되돌릴 수 없습니다.", p_id);
 }

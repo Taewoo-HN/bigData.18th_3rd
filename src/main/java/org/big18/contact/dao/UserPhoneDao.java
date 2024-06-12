@@ -59,7 +59,7 @@ public class UserPhoneDao {
         StringBuilder sb = new StringBuilder();
 
         sb.append("SELECT P_ID 				");
-        sb.append("  FROM USERS_Phone	");
+        sb.append("  FROM USER_Phone	");
         sb.append(" WHERE USER_ID = ?			");
         sb.append(" ORDER BY P_ID			");
 

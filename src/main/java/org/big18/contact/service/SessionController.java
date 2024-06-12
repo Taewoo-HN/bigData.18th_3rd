@@ -33,7 +33,7 @@ public class SessionController {
         model.addAttribute("title", "이미 로그인되어 있습니다.");
         model.addAttribute("message", "메인 페이지로 이동합니다.");
         model.addAttribute("icon", "info");
-        model.addAttribute("searchUrl", "/index");
+        model.addAttribute("searchUrl", "/main");
         return model;
     }
 
