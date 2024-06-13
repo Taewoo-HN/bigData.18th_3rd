@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>수정페이지 입니다.</title>
+    <html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>연락처 추가페이지입니다.</title>
+        <script
+                src="https://kit.fontawesome.com/08000d9965.js"
+                crossorigin="anonymous"
+        ></script>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css"/>
+        <!--빈칸 검증 및 추가여부 확인 스크립트-->
+        <script src="../static/js/UpdateContactCheck.js"></script>
+    </head>
+    <body>
+    <!-- 상단메뉴 시작 -->
+    <div class="w3-navbar w3-bar-block w3-black top-nav">
+        <a href="/logout" class=" w3-button">
+            <i class="fa fa-sign-out-alt"></i> <span>로그아웃</span>
+        </a>
+        <a href="/main" class=" w3-button">
+            <i class="fa fa-home"></i> <span>메인화면</span>
+        </a>
+        <a href="/insert" class="w3-button">
+            <i class="fa fa-user-plus"></i> <span>추가</span>
+        </a>
+        <a href="/logout" class=" float-end text-secondary">
+            <img src="../static/images/working.ico" alt="logo"
+                 style="width: 20px; height: 20px; margin: 0px; padding: 0px"/>
+            <span class="nav-profile-name fs-6" th:text="${user_name} + '(' + ${user_id} + ')님 환영합니다.'"></span>
+            <img src="../static/images/working.ico" alt="logo" style="width: 20px; height: auto;"/>
+
+        </a>
+    </div>
+    <div class=" container justify-content-center w-50 h-50 align-item-center">
+        <div class="card shadow text-left py-5 px-4 px-sm-5" style="margin: 50px">
+            <div class="title-container card-title">
+                <img src="../static/images/minicarrot.ico" alt="logo" style="width:70px">
+                <span class="fs-2 fw-bold">연락처 수정 </span>
+            </div>
+            <div>
+                <img src="../static/images/eating.ico" alt="logo" style="width:20px">
+                <span class="font-weight-light text-align-center fs-6">Update Your Contact Dict</span>
+                <img src="../static/images/eating.ico" alt="logo" style="width:20px">
+            </div>
+            <!-- 입력폼 시작 -->
+            <form class="pt-3" onsubmit="return isValidCode(this.form)" method="post"
+                  action="/update">
+                <div class="form-group">
+                    <input type="text" class="form-control  " name="p_id" th:value="${contact.p_id}"
+                           placeholder="연락처 아이디" hidden>
+                </div>
+                <div class="form-group mb-3">
+                    <label>이름</label>
+                    <input type="text" class="form-control  " name="name" th:value="${contact.name}"
+                           pattern="^[가-힣]{1,10}|[a-zA-Z0-9]{1,20}$" placeholder="이름(한글 10자/영문 20자 이하)">
+                </div>
+                <div class="form-group mb-3" >
+                    <label>전화번호</label>
+                    <input type="tel" class="form-control  " name="phone_num"
+                           th:value="${contact.phone_num}"
+                           pattern="^\d{2,3}\d{3,4}\d{4}$" placeholder="전화번호(-없이 입력)">
+                </div>
+                <div class="form-group mb-3">
+                    <label>주소</label>
+                    <input type="text" class="form-control  " name="address" th:value="${contact.address}"
+                           pattern="^[가-힣]{1,100}|[a-zA-Z0-9]{1,200}$" placeholder="주소(한글 100자/영문 200자 이하)">
+                </div>
+                <!-- 구분 시작 -->
+                <div class="form-group mb-3">
+                    <label>구분</label>
+                    <select class="form-control  " style="color:black" name="gubun_cd">
+                        <th:block th:each="gubun : ${gubunList}">
+                            <option th:value="${gubun.gubun_cd}" th:text="${gubun.gubun_nm}"
+                                    th:selected="${gubun.gubun_cd} == ${contact.gubun_cd}"></option>
+                        </th:block>
+                    </select>
+                </div>
+                <!-- 그룹 구분 끝 -->
+                <!-- 수정버튼 -->
+                <div class="mt-3">
+                    <a class="btn btn-block btn-warning font-weight-medium auth-form-btn" name="editbtn" onclick="formSubmit()">수정</a>
+                </div>
+            </form>
+            <!-- 입력폼 끝 -->
+        </div>
+    </div>
+    </body>
+    </html>

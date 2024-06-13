@@ -3,7 +3,6 @@ package org.big18.contact.dto;
 
 import lombok.*;
 
-import java.sql.Date;
 
 @Data
 public class UserPhone {

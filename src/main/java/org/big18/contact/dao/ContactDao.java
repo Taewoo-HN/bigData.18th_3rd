@@ -27,8 +27,8 @@ public class ContactDao {
         StringBuilder sb = new StringBuilder();
 
         sb.append("INSERT INTO Phonebook3 VALUES						");
-        sb.append("((SELECT nvl(max(P_ID),0)+1 FROM phonebook3)	");
-        sb.append(", ?, ?, ?, ?	");
+        sb.append("((SELECT nvl(max(P_ID),0)+1 FROM phonebook3)	        ");
+        sb.append(", ?, ?, ?, ? )	                                    ");
 
         String sql = sb.toString();
 
@@ -97,6 +97,8 @@ public class ContactDao {
      * end getAllContact()
      */
 
+
+
     //	한명 연락처 출력 메소드
     public ContactDto getOneContact(String p_id) throws Exception {
         ContactDto dto = new ContactDto();
@@ -109,8 +111,8 @@ public class ContactDao {
         sb.append("     , p.ADDRESS					");
         sb.append("     , p.GUBUN_cd  				");
         sb.append("     , g.GUBUN_NM				");
-        sb.append("  FROM phonebook3 p,				");
-        sb.append("       GUBUNS g					");
+        sb.append("  FROM phonebook3 p				");
+        sb.append("       , GUBUN g					");
         sb.append(" WHERE p.GUBUN_cd = g.GUBUN_cd		");
         sb.append("   AND p.P_ID = ?			");
 
@@ -125,7 +127,7 @@ public class ContactDao {
                             ContactDto dto = new ContactDto();
                             dto.setP_id(rs.getString("p_id"));
                             dto.setName(rs.getString("name"));
-                            dto.setPhone_num(rs.getString("phone"));
+                            dto.setPhone_num(rs.getString("phone_num"));
                             dto.setAddress(rs.getString("address"));
                             dto.setGubun_cd(rs.getString("gubun_cd"));
                             dto.setGubun_nm(rs.getString("gubun_nm"));
@@ -151,7 +153,7 @@ public class ContactDao {
 
         sb.append("UPDATE Phonebook3				");
         sb.append("   SET NAME = ?				");
-        sb.append("     , PHONE = ?				");
+        sb.append("     , PHONE_num = ?				");
         sb.append("     , ADDRESS = ?			");
         sb.append("		, GUBUN_cd = ?			");
         sb.append("WHERE P_ID = ?			");

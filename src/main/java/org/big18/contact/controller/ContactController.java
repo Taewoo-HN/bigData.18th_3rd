@@ -67,7 +67,6 @@ import java.util.ArrayList;
                 model = scontroller.notLoginError(model);
                 return "message";
             }
-
             try {
 //			상단에 적어줄 유저명과 ID 모델에 저장
                 model = scontroller.getUserInfo(session, model);
@@ -84,7 +83,7 @@ import java.util.ArrayList;
                 return "message";
             }
 
-            return "insert";
+            return "add";
         } // end insertPage()
 
         //	추가 처리 메소드
@@ -98,7 +97,7 @@ import java.util.ArrayList;
 
             try {
 //			추가 서비스 메소드 실행
-                String userid = (String)session.getAttribute("userid");
+                String userid = (String)session.getAttribute("user_id");
                 service.addContact(userid, dto);
 //			추가 성공시 성공 메시지 띄우고 메인 페이지로
                 model.addAttribute("title","연락처 추가 성공!");
@@ -118,12 +117,12 @@ import java.util.ArrayList;
         } // end addContact();
 
         //	수정 페이지 띄우는 메소드
-        @GetMapping("/edit/{personid}")
-        public String editPage(@PathVariable String pid, HttpSession session, Model model) {
+        @GetMapping("/edit/{p_id}")
+        public String editPage(@PathVariable String p_id, HttpSession session, Model model) {
 //		선택 박스에 넣어줄 그룹 테이블 정보를 읽어오는 리스트
             ArrayList<GubunDto> gubunlist = new ArrayList<>();
 //		세션 확인하고 로그인 안 되어 있으면 로그인 페이지로
-            if(session.getAttribute("islogin") == null) {
+            if(session.getAttribute("isLogin") == null) {
                 model = scontroller.notLoginError(model);
                 return "message";
             }
@@ -133,13 +132,13 @@ import java.util.ArrayList;
                 model = scontroller.getUserInfo(session, model);
 
 //			수정 페이지의 각 칸을 채워줄 초기 정보 dto 가져오기
-                ContactDto dto = service.getOneContact(pid);
-                dto.setP_id(pid);
+                ContactDto dto = service.getOneContact(p_id);
+                dto.setP_id(p_id);
                 model.addAttribute("contact", dto);
 
 //			그룹 테이블 전체 목록 읽어서 모델에 실어주기
                 gubunlist = cdao.getAllGubun();
-                model.addAttribute("gubunsList", gubunlist);
+                model.addAttribute("gubunList", gubunlist);
                 return "edit"; // forwarding
             } catch (Exception e) {
                 e.printStackTrace();

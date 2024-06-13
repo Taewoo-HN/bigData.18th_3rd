@@ -7,57 +7,26 @@
             src="https://kit.fontawesome.com/08000d9965.js"
             crossorigin="anonymous"
     ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
-    <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-    />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css"/>
+    <script src="../static/js/Search.js" type="text/javascript"></script>
+    <script src="../static/js/DeleteContactCheck.js" type="text/javascript"></script>
 </head>
 <body>
 <div class="w3-navbar w3-bar-block w3-black top-nav">
-    <a
-            href="#logout"
-            class=" w3-button"
-            onclick="location.href='./index.html'"
-    >
+    <a href="/logout" class=" w3-button">
         <i class="fa fa-sign-out-alt"></i> <span>로그아웃</span>
     </a>
-    <a
-            href="#home"
-            class=" w3-button"
-            onclick="showSection('home')"
-    >
+    <a href="/main" class=" w3-button">
         <i class="fa fa-home"></i> <span>메인화면</span>
     </a>
-    <a
-            href="#memberList"
-            class=" w3-button"
-            onclick="showSection('memberList')"
-    >
-        <i class="fa fa-users"></i> <span>회원목록</span>
-    </a>
-    <a href="#add" class="w3-button" onclick="showSection('add')">
+    <a href="/insert" class="w3-button">
         <i class="fa fa-user-plus"></i> <span>추가</span>
-    </a>
-    <a
-            href="#search"
-            class=" w3-button"
-            onclick="showSection('search')"
-    >
-        <i class="fa fa-search"></i> <span>검색</span>
-    </a>
-    <a
-            href="#edit"
-            class=" w3-button"
-            onclick="showSection('edit')"
-    >
-        <i class="fa fa-user-edit"></i> <span>수정</span>
     </a>
 </div>
 
@@ -80,297 +49,21 @@
     });
 </script>
 <div class="main-container">
-    <div style="margin-left: 70px">
+    <div style="margin:70px">
         <div class="main-content mt-5">
             <div id="home" class="section">
-                <h1 id="mainTitle">메인화면</h1>
-            </div>
-            <div class="justify-content-center">
-                <a class="text-align-center" > 환영합니다. [[${user.name}]]님! </a>
-            </div>
-            <div id="memberList" class="section">
-                <!-- 회원 정보 테이블 -->
-                <div class="mt-4">
-                    <h3>회원 목록</h3>
-                    <table class="table table-striped table-hover">
-                        <thead>
-                        <tr>
-                            <th>이름</th>
-                            <th>번호</th>
-                            <th>주소</th>
-                            <th>구분</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="contact:${contactList}">
-                            <td th:text="${contact.name}"></td>
-                            <td th:text="${contact.phone_num}"></td>
-                            <td th:text="${contact.address}"></td>
-                            <td th:text="${contact.gubun_nm}"></td>
-                        </tr>
-                        </tbody>
-                    </table>
+                <div class="justify-content-center">
+                    <img src="../static/images/minicarrot.ico" style="width:70px; height: auto;"/>
+                    <span th:text="${user_name} +'(' +${user_id}+')님 환영합니다'" class="text-align-center fs-5"></span>
+                    <img src="../static/images/minicarrot.ico" style="width:70px; height: auto;"/>
                 </div>
             </div>
-        </div>
-
-
-        <div id="search" class="section">
-            <!-- 검색 내용 -->
-            <h2>검색</h2>
-            <!-- 검색 입력 필드 -->
-            <label for="idInput" class="search-label">전화번호:</label>
-            <input
-                    type="text"
-                    id="idInput"
-                    class="search-input"
-                    onkeyup="searchFunction()"
-                    placeholder="전화번호 입력"
-            />
-            <label for="nameInput" class="search-label">이름:</label>
-            <input
-                    type="text"
-                    id="nameInput"
-                    class="search-input"
-                    onkeyup="searchFunction()"
-                    placeholder="이름 입력"
-            />
-            <label for="addressInput" class="search-label">주소:</label>
-            <input
-                    type="text"
-                    id="addressInput"
-                    class="search-input"
-                    onkeyup="searchFunction()"
-                    placeholder="주소 입력"
-            />
-            <label for="categoryInput" class="search-label">구분:</label>
-            <input
-                    type="text"
-                    id="categoryInput"
-                    class="search-input"
-                    onkeyup="searchFunction()"
-                    placeholder="구분 입력"
-            />
-
-            <table id="dataTable">
-                <thead>
-                <tr>
-                    <th>전화번호</th>
-                    <th>이름</th>
-                    <th>주소</th>
-                    <th>구분</th>
-                    <th>삭제</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>01012345678</td>
-                    <td>홍길동</td>
-                    <td>서울</td>
-                    <td>친구</td>
-                    <td>
-                        <button class="delete-btn">삭제</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>01012349876</td>
-                    <td>이순신</td>
-                    <td>부산</td>
-                    <td>친구</td>
-                    <td>
-                        <button class="delete-btn">삭제</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>01098741234</td>
-                    <td>김유신</td>
-                    <td>경주</td>
-                    <td>기타</td>
-                    <td>
-                        <button class="delete-btn">삭제</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>01023469512</td>
-                    <td>강감찬</td>
-                    <td>서울</td>
-                    <td>회사</td>
-                    <td>
-                        <button class="delete-btn">삭제</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>01023468812</td>
-                    <td>강감찬</td>
-                    <td>서울</td>
-                    <td>회사</td>
-                    <td>
-                        <button class="delete-btn">삭제</button>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-
-            <script>
-                function searchFunction() {
-                    var idInput,
-                        nameInput,
-                        addressInput,
-                        categoryInput,
-                        table,
-                        tr,
-                        td,
-                        i;
-                    var idValue, nameValue, addressValue, categoryValue;
-                    idInput = document.getElementById("idInput").value.toUpperCase();
-                    nameInput = document.getElementById("nameInput").value.toUpperCase();
-                    addressInput = document.getElementById("addressInput").value.toUpperCase();
-                    categoryInput = document.getElementById("categoryInput").value.toUpperCase();
-                    table = document.getElementById("dataTable");
-                    tr = table.getElementsByTagName("tr");
-
-                    for (i = 1; i < tr.length; i++) {
-                        tr[i].style.display = "none";
-                        td = tr[i].getElementsByTagName("td");
-                        if (td.length > 3) {
-                            idValue = td[0].textContent || td[0].innerText;
-                            nameValue = td[1].textContent || td[1].innerText;
-                            addressValue = td[2].textContent || td[2].innerText;
-                            categoryValue = td[3].textContent || td[3].innerText;
-
-                            if (
-                                (idInput === "" || idValue.toUpperCase().indexOf(idInput) > -1) &&
-                                (nameInput === "" || nameValue.toUpperCase().indexOf(nameInput) > -1) &&
-                                (addressInput === "" || addressValue.toUpperCase().indexOf(addressInput) > -1) &&
-                                (categoryInput === "" || categoryValue.toUpperCase().indexOf(categoryInput) > -1)
-                            ) {
-                                tr[i].style.display = "";
-                            }
-                        }
-                    }
-                }
-
-                // 삭제 버튼 추가
-                let deleteBtns = document.querySelectorAll(".delete-btn");
-                deleteBtns.forEach((btn) => {
-                    btn.addEventListener("click", function (e) {
-                        let clickedButton = e.target;
-                        clickedButton.closest("tr").remove();
-                    });
-                });
-            </script>
-        </div>
-        <div id="add" class="section">
-            <h2>회원 추가</h2>
-            <!-- Modal Trigger -->
-            <button
-                    type="button"
-                    class="btn btn-outline-primary"
-                    data-bs-toggle="modal"
-                    data-bs-target="#addMemberModal"
-            >
-                추가
-            </button>
-            <!-- Modal Content -->
-            <div
-                    class="modal fade"
-                    id="addMemberModal"
-                    tabindex="-1"
-                    aria-labelledby="addMemberModalLabel"
-                    aria-hidden="true"
-            >
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="addMemberModalLabel">
-                                회원 추가
-                            </h5>
-                            <button
-                                    type="button"
-                                    class="btn-close"
-                                    data-bs-dismiss="modal"
-                                    aria-label="Close"
-                            ></button>
-                        </div>
-                        <div class="modal-body">
-                            <form class="p-10 bg-white rounded shadow-xl">
-                                <div class="mb-4">
-                                    <label
-                                            for="name"
-                                            class="block text-gray-700 font-bold mb-2"
-                                    >이름</label
-                                    >
-                                    <input
-                                            type="text"
-                                            id="name"
-                                            class="add-input"
-                                            placeholder="이름을 입력하세요"
-                                    />
-                                </div>
-                                <div class="mb-4">
-                                    <label
-                                            for="phone"
-                                            class="block text-gray-700 font-bold mb-2"
-                                    >번호</label
-                                    >
-                                    <input
-                                            type="tel"
-                                            id="phone"
-                                            class="add-input"
-                                            placeholder="번호를 입력하세요"
-                                    />
-                                </div>
-                                <div class="mb-4">
-                                    <label
-                                            for="address"
-                                            class="block text-gray-700 font-bold mb-2"
-                                    >주소</label
-                                    >
-                                    <input
-                                            type="text"
-                                            id="address"
-                                            class="add-input"
-                                            placeholder="주소를 입력하세요"
-                                    />
-                                </div>
-                                <div class="mb-4">
-                                    <label
-                                            for="category"
-                                            class="block text-gray-700 font-bold mb-2"
-                                    >구분</label
-                                    >
-                                    <select id="category" class="add-select">
-                                        <option value="" selected>구분을 선택하세요</option>
-                                        <option value="family">가족</option>
-                                        <option value="friend">친구</option>
-                                        <option value="work">회사</option>
-                                        <option value="other">기타</option>
-                                    </select>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button
-                                    type="button"
-                                    class="btn btn-outline-primary"
-                                    data-bs-dismiss="modal"
-                            >
-                                취소
-                            </button>
-                            <button type="submit" class="btn btn-outline-primary">
-                                추가
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="edit" class="section">
-            <!-- 수정 내용 -->
-            <h2>수정</h2>
-            <div class="col-md-6">
-                <div class="input-group">
-              <span class="input-group-text" id="basic-addon1">
+            <!-- 회원 정보 테이블 -->
+            <div class="mt-4">
+                <h3>회원 목록</h3>
+                <div class="col-md-6">
+                    <div class="input-group">
+              <span class="input-group-text">
                 <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
@@ -387,97 +80,55 @@
                   ></path>
                 </svg>
               </span>
-                    <input
-                            type="text"
-                            class="form-control"
-                            placeholder="검색할 이름 입력"
-                            aria-label="Input group example"
-                            aria-describedby="basic-addon1"
-                            name="이름"
-                            value=""
-                    />
-                    <button type="submit" class="btn btn-outline-secondary">
-                        검색
-                    </button>
+                        <input
+                                type="text"
+                                class="form-control"
+                                placeholder="검색할 이름 입력"
+                                aria-label="Input group example"
+                                aria-describedby="basic-addon1"
+                                name="이름"
+                                oninput="searchTable(this.value)"
+                        />
+                        <button type="submit" class="btn btn-outline-secondary">
+                            검색
+                        </button>
+                    </div>
                 </div>
-            </div>
-            <div class="mx-auto">
-                <table class="table table-striped text-center table-hover">
+                <table class="table table-striped table-hover">
                     <thead>
-                    <tr class="border border-end border-primary">
+                    <tr>
+                        <th></th>
                         <th>이름</th>
-                        <th>전화번호</th>
+                        <th>번호</th>
                         <th>주소</th>
                         <th>구분</th>
-                        <th>처리</th>
+                        <th>비고</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr id="nomad">
-                        <td>홍길동</td>
-                        <td>1234</td>
-                        <td>울릉도</td>
-                        <td>가족</td>
+                    <tr th:each="list:${contactList}">
+                        <td th:text="${list.p_id}"></td>
+                        <td th:text="${list.name}"></td>
+                        <td th:text="${list.phone_num}"></td>
+                        <td th:text="${list.address}"></td>
+                        <td th:text="${list.gubun_nm}"></td>
                         <td>
-                            <div id="root">
-                                <button class="">삭제</button>
-                                <button
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#addMemberModal1"
-                                        onclick=""
-                                >
-                                    수정
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr id="nomad1">
-                        <td>고길동</td>
-                        <td>2345</td>
-                        <td>서울시</td>
-                        <td>친구</td>
-                        <td>
-                            <div>
-                                <button class="delete-btn">삭제</button>
-                                <button
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#addMemberModal1"
-                                >
-                                    수정
-                                </button>
-                            </div>
+                            <a
+                                    type="button"
+                                    class="btn btn-success btn-sm btn-icon-text mr-3"
+                                    th:href="@{/edit/{p_id}(p_id=${list.p_id})}"
+                            > 수정</a>
+                            <a
+                                    class="btn btn-danger btn-sm btn-icon-text"
+                                    th:href="@{/delete/{p_id}(p_id=${list.p_id})}"
+
+                            > 삭제 </a>
                         </td>
                     </tr>
                     </tbody>
-                    <tfoot>
-                    <tfoot>
-                    <tr>
-                        <td
-                                className="pt-2 pb-2 text-sm italic text-center text-gray-600 border-t"
-                        >
-                            2024년 5월 기준 회원 정보
-                        </td>
-                    </tr>
-                    </tfoot>
-                    </tfoot>
                 </table>
             </div>
-            <script>
-                let deleteBtns = document.querySelectorAll(".delete-btn");
-                deleteBtns.forEach((btn) => {
-                    btn.addEventListener("click", function (e) {
-                        let clickedButton = e.target;
-                        clickedButton.closest("tr").remove();
-                    });
-                });
-            </script>
-        </div>
-        <div id="logout" class="section">
-            <!-- 로그아웃 내용 -->
-            <h2>로그아웃</h2>
-            <p>여기에 로그아웃 페이지의 내용이 표시됩니다.</p>
         </div>
     </div>
-</div>
 </body>
 </html>

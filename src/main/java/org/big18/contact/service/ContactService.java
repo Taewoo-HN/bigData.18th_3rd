@@ -21,7 +21,8 @@ public class ContactService {
 //			연락처 테이블에 추가
             cdao.addContact(dto);
 //			유저-연락처 관계 테이블에 추가
-            ucdao.insertOne(userid, dto.getP_id());
+
+            ucdao.addJoin(userid);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -31,7 +31,7 @@ function formSubmit() {
 // 유효성 검사
 function isValidCode(form) {
     const name = form.name.value;
-    const phone = form.phone.value;
+    const phone = form.phone_num.value;
     const address = form.address.value;
 
     if(name == ''){
