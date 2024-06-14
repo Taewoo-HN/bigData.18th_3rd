@@ -100,7 +100,7 @@ import java.util.ArrayList;
                 String userid = (String)session.getAttribute("user_id");
                 service.addContact(userid, dto);
 //			추가 성공시 성공 메시지 띄우고 메인 페이지로
-                model.addAttribute("title","연락처 추가 성공!");
+                model.addAttribute("title", "Congratulation! 연락처 추가 성공!");
                 model.addAttribute("message", "메인 페이지로 돌아갑니다.");
                 model.addAttribute("icon", "success");
                 model.addAttribute("searchUrl", "/main");
@@ -108,7 +108,7 @@ import java.util.ArrayList;
             } catch (Exception e) {
                 e.printStackTrace();
 //			추가 실패할 때는 다시 입력받기
-                model.addAttribute("title", "에러: 연락처 추가 실패!");
+                model.addAttribute("title", "ERROR: 연락처 추가 실패");
                 model.addAttribute("message", "추가에 실패했습니다. 다시 시도해 주세요.");
                 model.addAttribute("icon", "error");
                 model.addAttribute("searchUrl", "redirect:/insert");
@@ -143,7 +143,7 @@ import java.util.ArrayList;
             } catch (Exception e) {
                 e.printStackTrace();
 //			에러 발생시 에러 메시지 출력 => 메인 페이지로
-                model.addAttribute("message", "에러: 유저 정보 읽어오기 실패!");
+                model.addAttribute("message", "에러: 유저 정보 로딩 실패!");
                 model.addAttribute("message", "메인 페이지로 돌아갑니다.");
                 model.addAttribute("icon", "error");
                 model.addAttribute("searchUrl", "/main");
@@ -158,7 +158,7 @@ import java.util.ArrayList;
                 //		연락처 수정 메소드 호출
                 service.updateContact(dto);
                 //		수정 성공시 성공 메시지 띄우고 메인 페이지로
-                model.addAttribute("title", "연락처 수정 완료!");
+                model.addAttribute("title", "연락처 수정 성공!");
                 model.addAttribute("message", "메인 페이지로 돌아갑니다.");
                 model.addAttribute("icon", "success");
                 model.addAttribute("searchUrl", "/main");
@@ -166,7 +166,7 @@ import java.util.ArrayList;
             } catch (Exception e) {
                 e.printStackTrace();
 //			수정 실패할 때는 에러 메시지 띄우고 메인으로
-                model.addAttribute("message", "에러: 연락처 수정 실패!");
+                model.addAttribute("message", "에러: 연락처 수정에 실패했습니다");
                 model.addAttribute("message", "메인 페이지로 돌아갑니다.");
                 model.addAttribute("icon", "error");
                 model.addAttribute("searchUrl", "/main");
@@ -183,15 +183,15 @@ import java.util.ArrayList;
 
 //		삭제 성공시 성공 메시지 띄우고 메인 페이지로
             if(status.equals("complete")){
-                model.addAttribute("title", "연락처 삭제 완료!");
+                model.addAttribute("title", "연락처가 삭제되었습니다!");
                 model.addAttribute("message", "메인 페이지로 돌아갑니다.");
                 model.addAttribute("icon", "success");
                 model.addAttribute("searchUrl", "/main");
                 return "message";
 //		삭제 실패할 때는 실패 메시지 띄우고 메인으로
             } else {
-                model.addAttribute("title", "에러: 연락처 삭제 실패!");
-                model.addAttribute("message", "삭제 실패했습니다. 다시 시도해 주세요.");
+                model.addAttribute("title", "에러: 연락처 삭제 오류!");
+                model.addAttribute("message", "삭제 실패했습니다. 다시 한번 부탁드립니다.");
                 model.addAttribute("icon", "error");
                 model.addAttribute("searchUrl", "/main");
                 return "message";

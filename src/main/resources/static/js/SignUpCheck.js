@@ -14,19 +14,19 @@ function isValidsignCode(form) {
     const email = form.email.checked;
 
     if(userid == ''){
-        swal("에러: ID는 필수입니다!", "ID를 꼭 써주세요!", "error");
+        swal("ERROR: ID칸이 비어있습니다.", "ID칸을 기입해주세요", "error");
         return false;
     }
     if(userpw == ''){
-        swal("에러: 비밀번호는 필수입니다!", "비밀번호를 꼭 써주세요!", "error");
+        swal("ERROR: 비밀번호칸이 비어있습니다", "비밀번호칸을 기입해주세요!", "error");
         return false;
     }
     if(username == ''){
-        swal("에러: 이름은 필수입니다!", "이름을 꼭 써주세요!", "error");
+        swal("ERROR: 이름칸이 비어있습니다", "이름칸을 기입해주세요!", "error");
         return false;
     }
     if(email == ''){
-        swal("에러: 이메일은 필수입니다!", "이메일을 넣어주세요", "error");
+        swal("ERROR: 이메일칸이 비어있습니다.", "이메일칸을 채워주세요", "error");
         return false;
     }
     else{

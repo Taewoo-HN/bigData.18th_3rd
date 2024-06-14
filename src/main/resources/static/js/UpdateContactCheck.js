@@ -35,15 +35,15 @@ function isValidCode(form) {
     const address = form.address.value;
 
     if(name == ''){
-        swal("경고: 이름은 필수입니다!","이름을 꼭 써주세요!", "warning");
+        swal("WARNING: 이름칸이 비어있습니다","이름을 꼭 써주세요!", "warning");
         return false;
     }
     if(phone == ''){
-        swal("경고: 전화번호는 필수입니다!","전화번호를 꼭 써주세요!", "warning");
+        swal("WARNING: 전화번호칸이 비어있습니다.","전화번호를 꼭 써주세요!", "warning");
         return false;
     }
     if(address == ''){
-        swal("경고: 주소는 필수입니다!","주소를 꼭 써주세요!", "warning");
+        swal("WARNING: 주소칸이 비어있습니다.","주소를 꼭 써주세요!", "warning");
         return false;
     }
     else{

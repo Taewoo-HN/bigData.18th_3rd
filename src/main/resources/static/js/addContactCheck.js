@@ -20,7 +20,7 @@ function formSubmit() {
     }
 
     function ConfirmAdd(){
-        confirm("이대로 추가하시겠어요?", "작성한 내용은 잘 확인하셨나요?");
+        confirm("연락처를 추가 합니다", "작성한 내용은 잘 확인하셨나요?");
     }
 
     if(isValidCode(form)) {
@@ -35,15 +35,15 @@ function isValidCode(form) {
     const address = form.address.value;
 
     if(name == ''){
-        swal("경고: 이름은 필수입니다!","이름을 꼭 써주세요!", "warning");
+        swal("WARNING","이름란을 작성해주세요!", "warning");
         return false;
     }
     if(phone == ''){
-        swal("경고: 전화번호는 필수입니다!","전화번호를 꼭 써주세요!", "warning");
+        swal("WARNING","전화번호란을 작성해주세요!", "warning");
         return false;
     }
     if(address == ''){
-        swal("경고: 주소는 필수입니다!","주소를 꼭 써주세요!", "warning");
+        swal("WARNING","주소란을 기입해주세요!", "warning");
         return false;
     }
     else{

@@ -53,9 +53,9 @@
         <div class="main-content mt-5">
             <div id="home" class="section">
                 <div class="justify-content-center">
-                    <img src="../static/images/minicarrot.ico" style="width:70px; height: auto;"/>
+                    <img src="/minicarrot.ico" style="width:70px; height: auto;"/>
                     <span th:text="${user_name} +'(' +${user_id}+')님 환영합니다'" class="text-align-center fs-5"></span>
-                    <img src="../static/images/minicarrot.ico" style="width:70px; height: auto;"/>
+                    <img src="/minicarrot.ico" style="width:70px; height: auto;"/>
                 </div>
             </div>
             <!-- 회원 정보 테이블 -->
@@ -126,10 +126,16 @@
                         </td>
                     </tr>
                     </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan="6" id="currenTime"></td>
+                    </tr>
+                    </tfoot>
                 </table>
             </div>
         </div>
     </div>
 </div>
+<script src="/CurrentTime.js" type="text/javascript"></script>
 </body>
 </html>
