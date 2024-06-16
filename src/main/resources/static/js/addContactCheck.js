@@ -20,7 +20,7 @@ function formSubmit() {
     }
 
     function ConfirmAdd(){
-        confirm("연락처를 추가 합니다", "작성한 내용은 잘 확인하셨나요?");
+        confirm("연락처를 추가 합니다", "작성한 내용으로 연락처가 추가됩니다");
     }
 
     if(isValidCode(form)) {
