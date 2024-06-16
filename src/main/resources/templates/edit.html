@@ -19,38 +19,36 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css"/>
         <!--빈칸 검증 및 추가여부 확인 스크립트-->
-        <script src="../static/js/UpdateContactCheck.js"></script>
+        <script src="/js/UpdateContactCheck.js"></script>
     </head>
     <body>
     <!-- 상단메뉴 시작 -->
-    <div class="w3-navbar w3-bar-block w3-black top-nav">
+    <div class="w3-navbar w3-bar-block w3-amber top-nav">
         <a href="/logout" class=" w3-button">
             <i class="fa fa-sign-out-alt"></i> <span>로그아웃</span>
         </a>
         <a href="/main" class=" w3-button">
             <i class="fa fa-home"></i> <span>메인화면</span>
         </a>
-        <a href="/insert" class="w3-button">
-            <i class="fa fa-user-plus"></i> <span>추가</span>
-        </a>
-        <a href="/logout" class=" float-end text-secondary">
-            <img src="../static/images/working.ico" alt="logo"
+        <a href="/logout" class=" float-end text-secondary " style="text-decoration: none;">
+            <img src="/images/working.ico" alt="logo"
                  style="width: 20px; height: 20px; margin: 0px; padding: 0px"/>
             <span class="nav-profile-name fs-6" th:text="${user_name} + '(' + ${user_id} + ')님 환영합니다.'"></span>
-            <img src="../static/images/working.ico" alt="logo" style="width: 20px; height: auto;"/>
+            <img src="/images/working.ico" alt="logo" style="width: 20px; height: auto;"/>
 
         </a>
     </div>
     <div class=" container justify-content-center w-50 h-50 align-item-center">
         <div class="card shadow text-left py-5 px-4 px-sm-5" style="margin: 50px">
-            <div class="title-container card-title">
-                <img src="../static/images/minicarrot.ico" alt="logo" style="width:70px">
-                <span class="fs-2 fw-bold">연락처 수정 </span>
+            <div class="title-container align-item-center card-title">
+                <img src="/images/minicarrot.ico" alt="logo" style="width:70px">
+                <span class="fs-2 text-align-center fw-bold">연락처 수정 </span>
+                <img src="/images/minicarrot.ico" alt="logo" style="width:60px">
             </div>
             <div>
-                <img src="../static/images/eating.ico" alt="logo" style="width:20px">
-                <span class="font-weight-light text-align-center fs-6">Update Your Contact Dict</span>
-                <img src="../static/images/eating.ico" alt="logo" style="width:20px">
+                <img src="/images/eating.ico" alt="logo" style="width:20px">
+                <span class="font-weight-light align-text-center fs-6">Update Your Contact Dict</span>
+                <img src="/images/eating.ico" alt="logo" style="width:20px">
             </div>
             <!-- 입력폼 시작 -->
             <form class="pt-3" onsubmit="return isValidCode(this.form)" method="post"
@@ -88,7 +86,7 @@
                 <!-- 그룹 구분 끝 -->
                 <!-- 수정버튼 -->
                 <div class="mt-3">
-                    <a class="btn btn-block btn-warning font-weight-medium auth-form-btn" name="editbtn" onclick="formSubmit()">수정</a>
+                    <a class="btn btn-block btn-warning font-weight-medium auth-form-btn" onclick="formSubmit()">수정</a>
                 </div>
             </form>
             <!-- 입력폼 끝 -->

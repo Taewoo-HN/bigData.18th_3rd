@@ -15,40 +15,35 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css"/>
     <!--빈칸 검증 및 추가여부 확인 스크립트-->
-    <script src="../static/js/AddContactCheck.js"></script>
+    <script src="/js/addContactCheck.js"></script>
 </head>
 <body>
-<!-- 상단메뉴 시작 -->
-
-<div class="w3-navbar w3-bar-block w3-black top-nav">
+<!-- nav bar start-->
+<div class="w3-navbar w3-bar-block w3-amber top-nav">
     <a href="/logout" class=" w3-button">
         <i class="fa fa-sign-out-alt"></i> <span>로그아웃</span>
     </a>
     <a href="/main" class=" w3-button">
         <i class="fa fa-home"></i> <span>메인화면</span>
     </a>
-    <a href="/insert" class="w3-button">
-        <i class="fa fa-user-plus"></i> <span>추가</span>
-    </a>
-    <a href="/logout" class=" float-end text-secondary">
-        <img src="../static/images/working.ico" alt="logo"
+    <a href="/logout" class=" float-end text-secondary" style="text-decoration: none">
+        <img src="/images/eating.ico." alt="logo"
              style="width: 20px; height: 20px; margin: 0px; padding: 0px"/>
         <span class="nav-profile-name fs-6" th:text="${user_name} + '(' + ${user_id} + ')님 환영합니다.'"></span>
-        <img src="../static/images/working.ico" alt="logo" style="width: 20px; height: auto;"/>
+        <img src="/images/eating.ico" alt="logo" style="width: 20px; height: auto;"/>
     </a>
 </div>
-<!-- 상단메뉴 끝 -->
-<!-- 추가 양식 시작 -->
-
+<!-- nav bar end -->
+<!-- add form start -->
 <div class="container-scroller">
     <div>
         <div class="content-wrapper d-flex align-items-center  ">
             <div class=" container justify-content-center w-50 h-50 align-item-center">
                 <div class=" card shadow text-left py-5 px-4 px-sm-5" style="margin: 50px">
                     <div class="title-container card-title">
-                        <img src="../static/images/minicarrot.ico" alt="logo" style="width:70px">
+                        <img src="images/minicarrot.ico" alt="logo" style="width:70px">
                         <span class="fs-3 fw-bold pt-5">연락처 추가</span>
-                        <img src="../static/images/minicarrot.ico" alt="logo" style="width:70px">
+                        <img src="images/minicarrot.ico" alt="logo" style="width:70px">
                     </div>
                     <!-- 입력폼 시작 -->
                     <div class="card-body">
@@ -70,22 +65,20 @@
                                        pattern="^[가-힣]{1,100}|[a-zA-Z0-9]{1,200}$"
                                        placeholder="주소(한글 100자/영문 200자 이하)">
                             </div>
-                            <!-- 구분 선택 -->
                             <div class="mb-3">
                                 <label class="form-label fs-6">구분</label>
                                 <select class="form-control" style="color:black" name="gubun_cd">
-                                    <th:block th:each="gubuns : ${gubunsList}">
-                                        <option th:value="${gubuns.gubun_cd}" th:text="${gubuns.gubun_nm}"></option>
+                                    <th:block th:each="gubun : ${gubunsList}">
+                                        <option th:value="${gubun.gubun_cd}" th:text="${gubun.gubun_nm}"></option>
                                     </th:block>
                                 </select>
                             </div>
-                            <!-- 추가버튼 -->
+                            <!-- submit button  -->
                             <div class="mt-4">
                                 <a class="btn btn-block btn-primary font-weight-medium auth-form-btn"
-                                   type="button" name="addbtn" onclick="formSubmit()">추가
+                                   type="button" onclick="formSubmit()">추가
                                 </a>
                             </div>
-                            <!-- 추가버튼 끝 -->
                         </form>
                         <!-- 입력폼 끝 -->
                     </div>
@@ -96,7 +89,6 @@
     <!-- content-wrapper ends -->
 </div>
 <!-- page-body-wrapper ends -->
-
-<!-- 추가 양식 끝 -->
+<!-- add-form end -->
 </body>
 </html>

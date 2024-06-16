@@ -8,4 +8,4 @@ const month = date.getMonth();
 const hours = date.getHours();
 
 // print the current time
-col.innerHTML = `${year}년 ${month}월 ${hours}시의 등록된 연락처`;
+col.innerText = `작성 시각 : ${year}년 ${month+1}월 ${hours}시 기준 등록된 연락처입니다.`;
