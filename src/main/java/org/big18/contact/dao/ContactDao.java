@@ -27,7 +27,7 @@ public class ContactDao {
         StringBuilder sb = new StringBuilder();
 
         sb.append("INSERT INTO Phonebook3 VALUES						");
-        sb.append("((SELECT nvl(max(P_ID),0)+1 FROM phonebook3)	        ");
+        sb.append("((SELECT to_char(nvl(max(to_number(P_ID)),0)+1) FROM phonebook3)	        ");
         sb.append(", ?, ?, ?, ? )	                                    ");
 
         String sql = sb.toString();
@@ -62,6 +62,7 @@ public class ContactDao {
         sb.append("		  GUBUN g 					");
         sb.append("	WHERE p.GUBUN_cD = g.GUBUN_cd		");
         sb.append("   AND p.P_ID = ?			");
+        sb.append(" ORDER BY p.P_ID asc			");
 
         String sql = sb.toString();
 

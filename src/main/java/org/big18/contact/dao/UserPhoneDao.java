@@ -84,7 +84,7 @@ public class UserPhoneDao {
 
         try {
 //			방금 추가한 사람의 personid 검색 쿼리 생성 및 실행
-            sql = "SELECT nvl(max(P_ID),0) FROM phonebook3";
+            sql = "SELECT to_char((nvl(max(to_number(P_ID)),0))) FROM phonebook3";
             String personid = jdbcTemplate.queryForObject(sql, String.class);
 
 //			ucdao.insertOne() 메소드 호출

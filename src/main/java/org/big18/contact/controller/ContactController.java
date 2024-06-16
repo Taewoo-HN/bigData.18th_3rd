@@ -94,7 +94,6 @@ import java.util.ArrayList;
                 model = scontroller.notLoginError(model);
                 return "message";
             }
-
             try {
 //			추가 서비스 메소드 실행
                 String userid = (String)session.getAttribute("user_id");
